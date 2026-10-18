@@ -669,11 +669,11 @@ function anadir_camaravigilancia(x, z, base, amp, vel) {
   cono_luz.translate(0, -haz_luz / 2, 0);
   cono_luz.rotateX(-Math.PI / 2);
   var cono = new THREE.Mesh(cono_luz, new THREE.MeshBasicMaterial({
-    color: 0xff2020, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false, pingPlanes: PLANOS_PATIO }));
+    color: 0xff2020, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false, clippingPlanes: PLANOS_PATIO }));
   cono.position.z = 0.55;
   pitchG.add(cono);
   var lucecita = new THREE.Mesh(new THREE.CircleGeometry(r, 48), new THREE.MeshBasicMaterial({
-    map: luz_camaravigilancia(), transparent: true, depthWrite: false, pingPlanes: PLANOS_PATIO, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
+    map: luz_camaravigilancia(), transparent: true, depthWrite: false, clippingPlanes: PLANOS_PATIO, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
   lucecita.rotation.x = -Math.PI / 2;
   lucecita.scale.y = luz_ancho;
   lucecita.position.set(0, 0.06 - altura, D);
@@ -931,7 +931,7 @@ function init() {
   renderer = new THREE.WebGLRenderer();
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
-  renderer.localpingEnabled = true;
+  renderer.localClippingEnabled = true;
   renderer.setSize(innerWidth, innerHeight);
   renderer.outputEncoding = THREE.sRGBEncoding;
   
