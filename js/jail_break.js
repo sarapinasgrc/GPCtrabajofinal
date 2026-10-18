@@ -669,11 +669,11 @@ function anadir_camaravigilancia(x, z, base, amp, vel) {
   cono_luz.translate(0, -haz_luz / 2, 0);
   cono_luz.rotateX(-Math.PI / 2);
   var cono = new THREE.Mesh(cono_luz, new THREE.MeshBasicMaterial({
-    color: 0xff2020, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false, clippingPlanes: PLANOS_PATIO }));
+    color: 0xff2020, transparent: true, opacity: 0.16, side: THREE.DoubleSide, depthWrite: false, pingPlanes: PLANOS_PATIO }));
   cono.position.z = 0.55;
   pitchG.add(cono);
   var lucecita = new THREE.Mesh(new THREE.CircleGeometry(r, 48), new THREE.MeshBasicMaterial({
-    map: luz_camaravigilancia(), transparent: true, depthWrite: false, clippingPlanes: PLANOS_PATIO, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
+    map: luz_camaravigilancia(), transparent: true, depthWrite: false, pingPlanes: PLANOS_PATIO, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
   lucecita.rotation.x = -Math.PI / 2;
   lucecita.scale.y = luz_ancho;
   lucecita.position.set(0, 0.06 - altura, D);
@@ -718,12 +718,15 @@ function crear_minimapa() {
 // pPersonaje y animación
 // ......................
 
-// para eliminar cualquier movimiento raro como cuando anda que no retroceda etc
-function quitarmovimientosobrante(clip) {
-  clip.tracks.forEach(function(track) {
+// para eliminar cualquier movimiento raro como cuando anda que no retroceda etc, la idea es quitar el movimiento del eje y y quedarnos con el x y z
+function quitarmovimientosobrante() {
+  .tracks.forEach(function(track) {
     if (!/hips\.position$/i.test(track.name)) return;
-    var v = track.values;
-    for (var i = 3; i < v.length; i += 3) { v[i] = v[0]; v[i + 2] = v[2]; }
+    var valores = track.values;
+    for (var i = 3; i < valores.length; i += 3) {
+        valores[i] = valores[0];
+        valores[i + 2] = valores[2];
+    }
   });
 }
 
@@ -763,23 +766,23 @@ function cargarModeloJugador() {
     scene.add(personaje);
     mixer = new THREE.AnimationMixer(personaje);
 
-    function clip(ruta, nombre, unaVez, quitarDesp) {
+    function un_clip_deanim(ruta, nombre, unaVez, quitarDesp) {
       loader.load(ruta, function(d) {
         var c = d.animations[0];
         if (quitarDesp) quitarmovimientosobrante(c);
-        var a = mixer.clipAction(c);
-        a.loop = unaVez ? THREE.LoopOnce : THREE.LoopRepeat;
-        a.clampWhenFinished = unaVez;
+        var auxiliar = mixer.clipAction(c);
+        auxiliar.loop = unaVez ? THREE.LoopOnce : THREE.LoopRepeat;
+        auxiliar.clampWhenFinished = unaVez;
         actions[nombre] = a;
         if (nombre === 'idle') cambiar_animacion('idle');
       });
     }
-    clip('models/Slow Run.fbx', 'walk', false, true);
-    clip('models/Standing Idle.fbx', 'idle', false, false);
-    clip('models/Jump.fbx', 'jump', true, true);
-    clip('models/Defeat.fbx', 'defeat', true, true);
-    clip('models/Falling Down.fbx', 'fall', true, true);
-    clip('models/Victory.fbx', 'victory', true, true);
+    un_clip_deanim('models/Slow Run.fbx', 'walk', false, true);
+    un_clip_deanim('models/Standing Idle.fbx', 'idle', false, false);
+    un_clip_deanim('models/Jump.fbx', 'jump', true, true);
+    un_clip_deanim('models/Defeat.fbx', 'defeat', true, true);
+    un_clip_deanim('models/Falling Down.fbx', 'fall', true, true);
+    un_clip_deanim('models/Victory.fbx', 'victory', true, true);
   }, undefined, function(err) { console.error('Error cargando el FBX:', err); });
 }
 
@@ -928,7 +931,7 @@ function init() {
   renderer = new THREE.WebGLRenderer();
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
-  renderer.localClippingEnabled = true;
+  renderer.localpingEnabled = true;
   renderer.setSize(innerWidth, innerHeight);
   renderer.outputEncoding = THREE.sRGBEncoding;
   
