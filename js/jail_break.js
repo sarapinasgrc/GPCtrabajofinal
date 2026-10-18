@@ -773,7 +773,7 @@ function cargarModeloJugador() {
         var auxiliar = mixer.clipAction(c);
         auxiliar.loop = unaVez ? THREE.LoopOnce : THREE.LoopRepeat;
         auxiliar.clampWhenFinished = unaVez;
-        actions[nombre] = a;
+        actions[nombre] = auxiliar;
         if (nombre === 'idle') cambiar_animacion('idle');
       });
     }
