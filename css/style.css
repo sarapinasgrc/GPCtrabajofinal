@@ -1,0 +1,287 @@
+/* Parte de home.html y general */
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    overflow: hidden;
+    font-family:'Trebuchet MS', Arial, sans-serif;
+    background: #111214;
+    color: #f2f2f2;
+}
+
+#container{
+    position:fixed;
+    inset:0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding: 24px 28px 20px;
+    background: radial-gradient(ellipse at 50% 43%, 
+    #292b30 0%, #191a1e 48%, #0b0c0e 100%);
+}
+
+#vista-personaje {
+    position: relative;
+    width: min(100%, 780px);
+    height: 360px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+#vista-personaje canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.titulo {
+    position:relative;
+    z-index: 2;
+    width: min(100%,1000px);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.titulo h1{
+    margin: 0 0 10px;
+    color: #ff9f1c;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 22px rgba(255, 159, 28, 0.15);
+}
+
+#vista-personaje {
+    position: relative;
+    width: min(100%, 760px);
+    height: 420px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+#vista-personaje canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.subtitulo{
+    margin: 0 0 14px;
+    color: #e1e1e1;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.objetivo{
+    margin: 0 0 14px;
+    color: #ffc16b;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+.escena {
+    position: relative;
+    width: 80%;
+    min-height: 220px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 35%, #17181b 0%, #0b0c0e 70%);
+}
+
+.controles{
+    position: absolute;
+    top: 50%;
+    right: 50;
+    transform: translateY(-50%);
+    z-index: 3; 
+    width: 225px;
+    padding: 18px;
+    background: rgba(7,8,10,0,96);
+    }
+
+.controles h2{
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #34302a;
+    color:#ff9f1c;
+    font-size: 18 px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 10px 0;
+    color: #dedede;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.tecla{
+    display: flex;
+    flex-shrink: 0;
+    gap: 4px;
+    min-width: 65px;
+}
+
+kbd{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 25px;
+    padding: 3px 6px;
+    background: #222327;
+    color: #ffc16b;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#btn-jugar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: min(100%, 390px);
+    min-height: 54px;
+    padding: 14px 24px;
+    background: #08090b;
+    color: #ff9f1c;
+    border: none;
+    border-left: 5px solid #ff9f1c;
+    text-align: center;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-top: 24px;
+}
+
+#btn-jugar:hover,#btn-jugar:focus-visible{
+    background: #24201a;
+    color: #ffc16b;
+}
+
+/* Parte de jail_break.html */
+
+
+#mapa{
+    position: fixed; 
+    top: 14px; 
+    right:14px;
+    width: min(25vw, 25vh);
+    height: min(25vw,25vh);
+    box-sizing: border-box;
+    border: 3px solid #ff9f1c;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    }
+
+#container_game{
+    position: fixed;
+    inset:0;
+}
+
+#hud{
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    gap: 12px;
+    color: black;
+    font-size: 20px;
+}
+
+#hud div {
+    background: #ffc16b;
+    border-left: 4px solid #ff9f1c;
+    padding: 8px 14px;
+}
+
+#hud .peligro{
+    border-color: #f22;
+    color: #f66;
+}
+
+#mensaje, #pausa {
+    display: none;
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    text-align: center;
+    z-index: 5;
+}
+
+#mensaje h1{
+    font-size: 56px;
+    margin: 0 0 10px;
+}
+
+#ayuda {
+    position: fixed;
+    bottom: 14px;
+    left: 14px;
+    background: rgba(7, 8, 10, 0.96);
+    color: #fff;
+    border-left: 4px solid #ff9f1c;
+    padding: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 290px;
+    z-index: 3;
+}
+
+#ayuda h3 {
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #34302a;
+    color: #ff9f1c;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#btn-ayuda {
+    position: fixed;
+    bottom: 14px;
+    left: 14px;
+    display: none;
+    cursor: pointer;
+    background: rgba(7, 8, 10, 0.96);
+    color: #fff;
+    border: 0;
+    border-left: 4px solid #ff9f1c;
+    padding: 10px 16px;
+    font: 15px "Trebuchet MS", sans-serif;
+}
+
+#btn-ayuda:hover {
+    background: rgba(25, 27, 33, 0.98);
+}
+
+#vineta {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.12) 100%);
+}
