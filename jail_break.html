@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Jail Break</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!-- Contenedor de la aplicacion -->
+    <div id="container_game"></div>
+    <div id="vineta"></div>
+    <div id="hud"><div id="hud-tiempo">Tiempo: 120</div><div id="hud-llaves">Llaves: 0 / 5</div></div>
+    <div id="ayuda">
+        <h3>Controles</h3>
+                <div class="fila">
+                    <span class="tecla"><kbd>W</kbd><kbd>⬆</kbd></span>
+                    Avanzar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>S</kbd><kbd>⬇</kbd></span>
+                    Retrocedes
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>A</kbd><kbd>⬅</kbd></span>
+                    Girar a la izquierda
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>D</kbd><kbd>➡</kbd></span>
+                    Girar a la derecha
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>SPACE</kbd></span>
+                    Saltar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>C</kbd></span>
+                    Cámara libre
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>P</kbd></span>
+                    Pausa
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>R</kbd></span>
+                    Reiniciar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>H</kbd></span>
+                    Ocultar menú
+                </div>
+        </div>
+
+    <div id="mensaje"><h1 id="titulo_mensaje"></h1><p id="subtitulo_mensaje"></p></div>
+    <div id="pausa"><h1> PAUSA</h1><p>P para continuar</p></div>
+    <div id="mapa"></div>
+    <button id="btn-ayuda"><kbd>H</kbd> Menú</button>           
+
+    </div>
+
+    <!-- Librerias  
+    <script src="lib/three.min_r140.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/GLTFLoader.js"></script>
+    <script src="js/inflate.min.js"></script>
+    <script src="js/FBXLoader.js"></script>-->
+    <script src="lib/three.min_r140.js"></script>
+    <script src="lib/fflate.min.js"></script>
+    <script src="lib/FBXLoader-3.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <!-- Nuestro codigo: debe cargarse despues de las librerias -->
+    <script src="js/jail_break.js"></script>
+
+  </body>
+</html>

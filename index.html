@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Jail Break</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!-- Contenedor de la aplicacion -->
+    <div id="container">
+        <header class="titulo">
+            <h1>Jail Break</h1>
+            <p class="subtitulo">
+                Después de una eternidad en la cárcel, el prisioner tiene la oportunidad de escapar.
+            </p>
+            <p class="subtitulo">
+                 Sobrevive, escapa y que no te atrapen.
+            </p>
+            <p class = "objetivo">
+                Reune todas las llaves antes de que se acabe el tiempo.
+            </p>
+            <p class = "objetivo">
+                Cuidado con ser visto, cuidado con la corriente, y sobre todo, cuidado con perderte.
+            </p>
+        </header>
+            <main class="escena">
+                <div id="vista-personaje"> </div> 
+
+            <aside class="controles">
+                <h2>Controles</h2>
+                <div class="fila">
+                    <span class="tecla"><kbd>ancho</kbd><kbd>⬆</kbd></span>
+                    Avanzar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>S</kbd><kbd>⬇</kbd></span>
+                    Retrocedes
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>A</kbd><kbd>⬅</kbd></span>
+                    Girar a la izquierda
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>D</kbd><kbd>➡</kbd></span>
+                    Girar a la derecha
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>SPACE</kbd></span>
+                    Saltar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>C</kbd></span>
+                    Cámara libre
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>P</kbd></span>
+                    Pausa
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>R</kbd></span>
+                    Reiniciar
+                </div>
+                <div class="fila">
+                    <span class="tecla"><kbd>H</kbd></span>
+                    Ocultar menú
+                </div>
+            </aside>
+
+            </main>
+
+            <a id="btn-jugar" href="jail_break.html"> 
+                Pulsa ENTER para iniciar el juego
+            </a>
+
+
+    </div>
+
+    <!-- Librerias  
+    <script src="lib/three.min_r140.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/GLTFLoader.js"></script>
+    <script src="js/inflate.min.js"></script>
+    <script src="js/FBXLoader.js"></script>-->
+    <script src="lib/three.min_r140.js"></script>
+    <script src="lib/fflate.min.js"></script>
+    <script src="lib/FBXLoader-3.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <!-- Nuestro codigo: debe cargarse despues de las librerias -->
+    <script src="js/home.js"></script>
+
+    <script>
+        document.addEventListener("keydown", function(event){
+            if (event.key === "Enter"){
+                event.preventDefault();
+                document.getElementById("btn-jugar").click();
+            }
+        })
+    </script>
+
+  </body>
+</html>
