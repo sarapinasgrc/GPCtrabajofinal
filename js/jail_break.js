@@ -719,8 +719,8 @@ function crear_minimapa() {
 // ......................
 
 // para eliminar cualquier movimiento raro como cuando anda que no retroceda etc, la idea es quitar el movimiento del eje y y quedarnos con el x y z
-function quitarmovimientosobrante() {
-  .tracks.forEach(function(track) {
+function quitarmovimientosobrante(c) {
+  c.tracks.forEach(function(track) {
     if (!/hips\.position$/i.test(track.name)) return;
     var valores = track.values;
     for (var i = 3; i < valores.length; i += 3) {
